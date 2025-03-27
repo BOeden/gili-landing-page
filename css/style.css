@@ -1,0 +1,640 @@
+/* גרסה 1: פלטת צבעים רכה, פונט Assistant */
+:root {
+    /* צבע ראשי - כחול כהה */
+    --primary: #1a4d80;       /* כחול כהה מקצועי */
+    --primary-light: #3a6ea5; /* כחול בהיר יותר */
+    --primary-dark: #0c3358;  /* כחול כהה יותר */
+    
+    /* צבע משני - טורקיז */
+    --secondary: #00b8d4;     /* טורקיז בהיר */
+    --secondary-light: #5aeaff; /* טורקיז בהיר יותר */
+    --secondary-dark: #0088a3; /* טורקיז כהה יותר */
+    
+    /* שומרים על צבע האקסנט הנוכחי כי הוא עובד טוב */
+    --accent: #ff7043;        /* כתום חם */
+    --accent-light: #ffab91;  /* כתום בהיר */
+    --accent-dark: #e64a19;   /* כתום כהה */
+    
+    --dark: #333333;
+    --light: #ffffff;
+    --gray: #f5f5f5;
+    --gray-dark: #e0e0e0;
+    
+    --box-shadow: 0 10px 30px rgba(26, 77, 128, 0.15);
+    --gradient: linear-gradient(135deg, var(--secondary), var(--primary));
+    --animation-duration: 0.6s;
+    --font-family: 'Assistant', sans-serif;
+}
+
+/* גרסה 2: פלטת צבעים נועזת, פונט Varela Round */
+/* :root {
+    --primary: #ff7043;       /* כתום */
+    --primary-light: #ffab91;
+    --primary-dark: #d84315;
+    --secondary: #81c784;     /* ירוק */
+    --secondary-light: #a5d6a7;
+    --secondary-dark: #388e3c;
+    --accent: #ffeb3b;        /* צהוב */
+    --dark: #212121;          /* שחור כהה */
+    --light: #ffffff;
+    --gray: #f5f5f5;
+    --gray-dark: #e0e0e0;
+    --box-shadow: 0 10px 30px rgba(255, 112, 67, 0.1); /* צל כתום */
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --animation-duration: 0.6s;
+    --font-family: 'Varela Round', sans-serif; /* שינוי לפונט Varela Round */
+} */
+
+/* שאר הסטייל זהה, למעט שימוש במשתנה --font-family */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);  /* שימוש במשתנה לפונט */
+    color: var(--dark);
+    line-height: 1.7;
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    border-bottom-left-radius: 60% 30%;
+    border-bottom-right-radius: 60% 30%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header:before,
+header:after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+}
+
+header:before {
+    top: -15%;
+    right: -10%;
+    width: 250px;
+    height: 250px;
+}
+
+header:after {
+    bottom: -10%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    animation: fadeInDown var(--animation-duration) ease, pulse 2s infinite;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        text-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    }
+    50% {
+        text-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    }
+    100% {
+        text-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    }
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    width: 100%;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background: var(--primary);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* אם יש הורה לכותרת שצריך להיות ממורכז */
+.section-title, /* או כל מחלקה אחרת שמכילה את הכותרת */
+section > h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.highlight-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 0.75rem;
+    margin-bottom: 100px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.highlight {
+    background: rgba(0, 0, 0, 0.152);
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    display: block;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+    color: var(--light);
+    border: 1px solid rgba(26, 77, 128, 0.15);
+    border-right: 3px solid var(--secondary);
+}
+
+.highlight-image {
+    position: absolute;
+    left: -120px;
+    bottom: -250px;
+    width: 300px;
+    z-index: 2;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2));
+    animation: floatEffect 4s ease-in-out infinite;
+}
+
+/* עדכון "הקרקע" מתחת לתמונה */
+.highlight-image::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 30px;
+    background: radial-gradient(ellipse at center, var(--primary-light) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.4; /* שקיפות עדינה יותר */
+}
+
+.avatar {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--box-shadow);
+    border: 5px solid var(--light);
+    animation: pulse 2s infinite;
+}
+
+.intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 2rem auto 3rem;
+}
+
+.intro p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0 5rem;
+    justify-content: center;
+}
+
+.feature {
+    flex: 1 1 300px;
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    color: var(--secondary);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+    text-align: center;
+}
+
+.feature ul {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+.feature ul li {
+    position: relative;
+    padding-right: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature ul li:before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.form-container {
+    background: linear-gradient(135deg, var(--light), var(--gray));
+    padding: 3rem;
+    border-radius: 15px;
+    margin: 3rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--secondary);
+}
+
+.form-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--secondary-dark);
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    transition: color 0.3s;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--gray-dark);
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.2);
+}
+
+.form-group:focus-within label {
+    color: var(--secondary);
+}
+
+.submit-button {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    margin: 2rem auto 0;
+    box-shadow: 0 5px 15px rgba(0, 172, 193, 0.2);
+}
+
+.submit-button:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3);
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-icons div {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-icons i {
+    font-size: 2rem;
+    color: var(--secondary-light);
+}
+
+.pop-in {
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* מדיה קוורי לתצוגה במובייל */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .feature {
+        flex: 1 1 100%;
+    }
+    
+    .footer-icons {
+        flex-direction: column;
+    }
+    
+    .highlight-container {
+        margin-bottom: 160px;
+    }
+    
+    .highlight-image {
+        bottom: -270px;
+        width: 220px;
+    }
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+    padding-bottom: 100px;
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-image {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    z-index: 2;
+}
+
+.presenter-image {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
+    animation: fadeInLeft var(--animation-duration) ease, float 4s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* מדיה קוורי למסכים קטנים יותר */
+@media (max-width: 992px) {
+    .hero-image {
+        width: 250px;
+        left: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        padding-bottom: 160px;
+    }
+    
+    .hero-image {
+        width: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -180px;
+    }
+}
+
+@media (max-width: 480px) {    
+    .hero-image {
+        width: 130px;
+    }
+}
+
+.move-more-left {
+    margin-left: -20px;
+}
+
+@keyframes floatEffect {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.upgrade-title {
+    text-align: center;
+    width: 100%;
+}
+
+.features-section { /* או כל מחלקה אחרת שמכילה את האזור הזה */
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* עיצוב מחודש לאזור ההטבות */
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+}
+
+.benefit {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-top: 5px solid var(--secondary);
+}
+
+.benefit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.benefit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.benefit h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.benefit::after {
+    content: '✓';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* הוספת סגנון מיוחד לפריט "תמיכה אישית" בלבד */
+.benefit:nth-child(3) h3, /* אם זה הפריט השלישי */
+.benefit h3.support-title, /* או אם יש לו מחלקה ייחודית */
+h3:contains("תמיכה אישית") { /* או אם התוכן שלו מכיל טקסט ספציפי */
+    color: var(--secondary); /* שינוי מ-accent לצבע הטורקיז */
+}
+
+/* סגנון הפיילוט */
+.pilot {
+    padding: 3rem 0;
+    text-align: center;
+    background: var(--gray);
+    border-radius: 20px;
+    margin: 3rem 0;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.pilot h2 {
+    color: var(--secondary-dark);
+    margin-bottom: 1rem;
+}
+
+.pilot p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
