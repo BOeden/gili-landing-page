@@ -442,7 +442,7 @@ footer {
     
     .highlight-image {
         bottom: -270px;
-        width: 220px;
+        /* width: 220px; */
     }
 }
 
